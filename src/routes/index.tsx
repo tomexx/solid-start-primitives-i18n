@@ -7,9 +7,7 @@ export default function Home() {
   const [t, { add, locale, dict }] = useI18n();
   return (
     <main>
-      <Title>
-        <SeoTitle />
-      </Title>
+      <SeoTitle />
       <div>
         <button onClick={() => locale("fr")}>fr</button>
         <button onClick={() => locale("en")}>en</button>
