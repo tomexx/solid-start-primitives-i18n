@@ -13,8 +13,19 @@ import {
   Title,
 } from "solid-start";
 import "./root.css";
+import { I18nContext, createI18nContext } from "@solid-primitives/i18n";
 
 export default function Root() {
+  const dict = {
+    fr: {
+      hello: "bonjour {{ name }}, comment vas-tu ?"
+    },
+    en: {
+      hello: "hello {{ name }}, how are you?"
+    }
+  };
+  const value = createI18nContext(dict, "fr");
+
   return (
     <Html lang="en">
       <Head>
@@ -25,11 +36,13 @@ export default function Root() {
       <Body>
         <Suspense>
           <ErrorBoundary>
-            <A href="/">Index</A>
-            <A href="/about">About</A>
-            <Routes>
-              <FileRoutes />
-            </Routes>
+            <I18nContext.Provider value={value}>
+              <A href="/">Index</A>
+              <A href="/about">About</A>
+              <Routes>
+                <FileRoutes />
+              </Routes>
+            </I18nContext.Provider>
           </ErrorBoundary>
         </Suspense>
         <Scripts />
