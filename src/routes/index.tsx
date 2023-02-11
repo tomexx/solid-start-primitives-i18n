@@ -1,5 +1,5 @@
 import { Title } from "solid-start";
-import { SeoTitle } from "~/components/SeoTitle";
+import { seoTitle } from "~/util/SeoTitle";
 import Counter from "~/components/Counter";
 import { I18nContext, createI18nContext, useI18n } from "@solid-primitives/i18n";
 
@@ -8,7 +8,7 @@ export default function Home() {
   return (
     <main>
       <Title>
-        <SeoTitle />
+        {seoTitle()}
       </Title>
       <div>
         <button onClick={() => locale("fr")}>fr</button>
